@@ -15,61 +15,27 @@ export interface MarketPreset {
   };
 }
 
+// RESTRICTED TO SOFT-PEGGED PAIRS FOR MULTIPLY
 export const MARKET_PRESETS: Record<string, MarketPreset> = {
-  'stSUI/SUI': {
-    name: 'Loop stSUI',
-    collateral: 'stSUI',
-    debt: 'SUI',
-    supplyApy: 17.3,
-    borrowApy: 1.0, // xSui Market: SUI Borrow 2.9%, but stSUI borrow is 1.0%. Assuming borrowing SUI against stSUI.
-    liquidationLtv: 80, 
-    coingeckoIds: { collateral: 'staking-sui', debt: 'sui' }
-  },
   'haSUI/SUI': {
     name: 'Loop haSUI',
     collateral: 'haSUI',
     debt: 'SUI',
     supplyApy: 45.2,
     borrowApy: 1.0,
-    liquidationLtv: 51, 
+    liquidationLtv: 90, // Soft pegs usually allow higher LTV
     coingeckoIds: { collateral: 'ha-sui', debt: 'sui' }
   },
-  'DEEP/SUI': {
-    name: 'Long DEEP',
-    collateral: 'DEEP',
+  'stSUI/SUI': {
+    name: 'Loop stSUI',
+    collateral: 'stSUI',
     debt: 'SUI',
-    supplyApy: 3.2,
-    borrowApy: -31.2, // Reward for borrowing?
-    liquidationLtv: 56,
-    coingeckoIds: { collateral: 'deepbook', debt: 'sui' }
+    supplyApy: 17.3,
+    borrowApy: 1.0, 
+    liquidationLtv: 85, 
+    coingeckoIds: { collateral: 'staking-sui', debt: 'sui' }
   },
-  'WAL/SUI': {
-    name: 'Long WAL',
-    collateral: 'WAL',
-    debt: 'SUI',
-    supplyApy: 32.9,
-    borrowApy: -16.2,
-    liquidationLtv: 57,
-    coingeckoIds: { collateral: 'walrus', debt: 'sui' } 
-  },
-  'wBTC/USDC': {
-    name: 'Long wBTC',
-    collateral: 'wBTC',
-    debt: 'USDC',
-    supplyApy: 4.1,
-    borrowApy: 5.6, // Borrowing USDC
-    liquidationLtv: 81,
-    coingeckoIds: { collateral: 'wrapped-bitcoin', debt: 'usd-coin' }
-  },
-  'SUI/USDC': {
-    name: 'Long SUI',
-    collateral: 'SUI',
-    debt: 'USDC',
-    supplyApy: 0.0, // Main Market SUI supply
-    borrowApy: 5.6,
-    liquidationLtv: 81,
-    coingeckoIds: { collateral: 'sui', debt: 'usd-coin' }
-  }
+  // Volatile pairs removed for Multiply Calculator per request
 };
 
 export interface TokenDef {
@@ -130,7 +96,7 @@ export const FALLBACK_PRICES: Record<string, number> = {
   'staking-sui': 3.42,
   'ha-sui': 3.45,
   'deepbook': 0.06,
-  'walrus': 0.15, // Placeholder/Est
+  'walrus': 0.15, 
   'wrapped-bitcoin': 96500,
   'usd-coin': 1.00
 };
