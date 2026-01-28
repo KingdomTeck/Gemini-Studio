@@ -1,0 +1,5 @@
+{
+  "name": "Pebble Finance Multiply Calculator",
+  "description": "A DeFi yield calculator based on Pebble Finance logic. Calculates Net APY, Profit, and Risk (LTV) based on capital and leverage settings.",
+  "requestFramePermissions": []
+}
