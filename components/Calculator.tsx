@@ -108,11 +108,11 @@ const Calculator: React.FC = () => {
   };
 
   const handleLeverageChange = (val: number) => {
-    const newLeverage = Math.min(Math.max(val, 1.0), 50); // Increased max leverage to 50x for soft pegs
+    const newLeverage = Math.min(Math.max(val, 1.0), 10); // Reverted max leverage to 10x
     setInputs(prev => ({ ...prev, leverage: newLeverage }));
   };
 
-  const presetLeverages = [3, 5, 10, 20, 30];
+  const presetLeverages = [2, 3, 5, 8, 10];
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6">
@@ -181,12 +181,12 @@ const Calculator: React.FC = () => {
                   <input
                     type="number"
                     min="1"
-                    max="50"
+                    max="10"
                     step="0.1"
                     value={inputs.leverage}
                     onChange={(e) => {
                        const val = parseFloat(e.target.value);
-                       if(!isNaN(val) && val >= 1 && val <= 50) {
+                       if(!isNaN(val) && val >= 1 && val <= 10) {
                            setInputs(prev => ({...prev, leverage: val}));
                        }
                     }}
@@ -199,7 +199,7 @@ const Calculator: React.FC = () => {
               <input
                 type="range"
                 min="1.0"
-                max="50"
+                max="10"
                 step="0.1"
                 value={inputs.leverage}
                 onChange={(e) => handleLeverageChange(parseFloat(e.target.value))}
