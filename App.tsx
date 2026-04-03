@@ -2,6 +2,7 @@ import React from 'react';
 import Calculator from './components/Calculator';
 import LivePrices from './components/LivePrices';
 import { Calculator as CalculatorIcon } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   return (
@@ -48,6 +49,7 @@ const App: React.FC = () => {
           Rates are subject to market fluctuations.
         </p>
       </footer>
+      <Analytics />
     </div>
   );
 };
